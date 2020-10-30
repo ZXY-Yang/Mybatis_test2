@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.myBatis.test.mapper.AddressMapper">
+    <resultMap id="selectUserByName" type="com.qf.myBatis.test.entity.User">
+        <id property="userId" column="User_id"/>
+        <result property="userName" column="User_name"/>
+        <result property="userStatus" column="User_status"/>
+</resultMap>
+    <select id="selectUserByName" resultType="com.qf.myBatis.test.entity.User">
+    SELECT
+        a.order_name,a.order_phone,a.order_location,
+        a.order_detailAddress
+    FROM address a,user u
+    WHERE a.order_userId=u.User_id
+    AND a.order_name=#{userName}
+</select>
+</mapper>
